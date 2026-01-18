@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Ojos</title>
+
+<style>
+    /* Estilo general de la página */
+    body {
+        margin: 0;
+        background: black;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: monospace;
+        color: white;
+    }
+
+    /* Imagen de los ojos */
+    #ojos {
+        width: 220px;
+        image-rendering: pixelated; /* efecto pixel */
+        animation: parpadeo 4s infinite;
+    }
+
+    /* Animación del parpadeo */
+    @keyframes parpadeo {
+        0%, 92%, 100% {
+            transform: scaleY(1);
+        }
+        94% {
+            transform: scaleY(0.1);
+        }
+    }
+
+    /* Texto del mensaje */
+    #mensaje {
+        margin-top: 25px;
+        font-size: 18px;
+        letter-spacing: 1px;
+        min-height: 24px;
+        text-align: center;
+    }
+</style>
+</head>
+
+<body>
+
+    <!-- Ojos -->
+    <img id="ojos" src="ojos.png" alt="Ojos pixel">
+
+    <!-- Mensaje -->
+    <div id="mensaje"></div>
+
+<script>
+    // Texto que aparecerá letra por letra
+    const texto = "Tus ojos son más lindos que las estrellas, Michel.";
+    let indice = 0;
+    const velocidad = 60; // milisegundos por letra
+    const mensaje = document.getElementById("mensaje");
+
+    function escribirTexto() {
+        if (indice < texto.length) {
+            mensaje.textContent += texto.charAt(indice);
+            indice++;
+            setTimeout(escribirTexto, velocidad);
+        }
+    }
+
+    escribirTexto();
+</script>
+
+</body>
+</html>
